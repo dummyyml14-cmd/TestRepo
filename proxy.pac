@@ -1,14 +1,19 @@
 function FindProxyForURL(url, host) {
-    if (shExpMatch(host, "10.42.2.66") || 
-        shExpMatch(host, "10.42.4.67") || 
-        isInNet(host, "127.0.0.1", "255.255.255.255") ||
-        isInNet(host, "185.199.108.0", "255.255.252.0") || // Specific GitHub range
-        isInNet(host, "185.199.0.0", "255.255.0.0") ||
-        dnsDomainIs(host, ".youtube.com") ||  // Excludes all youtube subdomains
-        dnsDomainIs(host, ".ndtv.com") ||     // Excludes all ndtv subdomains
+    // 1. Domain checks (Fast, no DNS lookup needed)
+    if (dnsDomainIs(host, ".youtube.com") || 
+        dnsDomainIs(host, ".ndtv.com") || 
         localHostOrDomainIs(host, "youtube.com") ||
-        localHostOrDomainIs(host, "ndtv.com")) {     // Your requested /16 range
+        localHostOrDomainIs(host, "ndtv.com")) {
         return "DIRECT";
     }
+
+    // 2. IP/Internal checks (Triggers DNS lookup)
+    if (shExpMatch(host, "10.42.*") || 
+        (shExpMatch(host, "185.199.*") ||
+        isInNet(host, "127.0.0.1", "255.255.255.255")) {
+        return "DIRECT";
+    }
+
+    // 3. Everything else goes to Proxy via Tunnel
     return "PROXY 10.42.2.66:8090";
 }
