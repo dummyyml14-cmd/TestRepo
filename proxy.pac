@@ -1,19 +1,26 @@
 function FindProxyForURL(url, host) {
-    // 1. Domain checks (Fast, no DNS lookup needed)
-    if (dnsDomainIs(host, ".youtube.com") || 
-        dnsDomainIs(host, ".ndtv.com") || 
-        localHostOrDomainIs(host, "youtube.com") ||
-        localHostOrDomainIs(host, "ndtv.com")) {
+    // 1. DIRECT: The PAC file's own location (GitHub Pages)
+    // This prevents the phone from trying to use the proxy to find the script itself.
+    if (dnsDomainIs(host, "dummyyml14-cmd.github.io") || 
+        shExpMatch(host, "github.io")) {
         return "DIRECT";
     }
 
-    // 2. IP/Internal checks (Triggers DNS lookup)
-    if (shExpMatch(host, "10.42.*") || 
-        shExpMatch(host, "185.199.*") ||
-        isInNet(host, "127.0.0.1", "255.255.255.255")) {
+    // 2. DIRECT: News and Streaming (No Proxy)
+    if (dnsDomainIs(host, ".ndtv.com") || 
+        localHostOrDomainIs(host, "ndtv.com") ||
+        dnsDomainIs(host, ".hotstar.com") || 
+        localHostOrDomainIs(host, "hotstar.com") ||
+        shExpMatch(host, "*.hotstar.com") ||
+        shExpMatch(host, "*.akamaihd.net")) { // Required for Hotstar video delivery
         return "DIRECT";
     }
 
-    // 3. Everything else goes to Proxy via Tunnel
+    // 3. DIRECT: Internal/Local traffic
+    if (isPlainHostName(host)) {
+        return "DIRECT";
+    }
+
+    // 4. PROXY: Everything else goes via the IPsec Tunnel
     return "PROXY 10.42.2.66:8090";
 }
