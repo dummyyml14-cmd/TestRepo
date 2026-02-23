@@ -6,13 +6,19 @@ function FindProxyForURL(url, host) {
         return "DIRECT";
     }
 
-    // 2. DIRECT: News and Streaming (No Proxy)
-    if (dnsDomainIs(host, ".ndtv.com") || 
-        localHostOrDomainIs(host, "ndtv.com") ||
+    if (// Myntra Domains
+        dnsDomainIs(host, ".myntra.com") || 
+        localHostOrDomainIs(host, "myntra.com") ||
+        shExpMatch(host, "*.myntassets.com") || // Myntra's Image/Static CDN
+        
+        // Hotstar Domains
         dnsDomainIs(host, ".hotstar.com") || 
         localHostOrDomainIs(host, "hotstar.com") ||
-        shExpMatch(host, "*.hotstar.com") ||
-        shExpMatch(host, "*.akamaihd.net")) { // Required for Hotstar video delivery
+        shExpMatch(host, "*.akamaihd.net") || 
+        
+        // NDTV Domains
+        dnsDomainIs(host, ".ndtv.com") || 
+        localHostOrDomainIs(host, "ndtv.com")) {
         return "DIRECT";
     }
 
