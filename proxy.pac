@@ -24,6 +24,9 @@ function FindProxyForURL(url, host) {
         // Send Amazon traffic DIRECT
         if (dnsDomainIs(host, "amazon.com") || 
             dnsDomainIs(host, "www.amazon.com") ||
+            dnsDomainIs(host, "amazon.in") || 
+            dnsDomainIs(host, "fls-eu.amazon.in") ||
+            shExpMatch(host, "*.amazon.in") ||
             shExpMatch(host, "*.amazon.com") ||
             shExpMatch(host, "*.media-amazon.com")) {
             return "DIRECT";
