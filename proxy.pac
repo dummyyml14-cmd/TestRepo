@@ -15,22 +15,25 @@ function FindProxyForURL(url, host) {
         dnsDomainIs(host, ".hotstar.com") || 
         localHostOrDomainIs(host, "hotstar.com") ||
         shExpMatch(host, "*.akamaihd.net") || 
+
+        // Amazon
+        shExpMatch(host, "*.amazon.com") || 
+        shExpMatch(host, "*.amazon.in") || 
+        shExpMatch(host, "*.amazon.co.uk") ||
+        shExpMatch(host, "*.media-amazon.com") ||
+        dnsDomainIs(host, "amazon.com") ||
+        dnsDomainIs(host, "amazon.in") ||
+        dnsDomainIs(host, "amazon.co.uk") || 
+
+        // Medium
+        shExpMatch(host, "*.medium.com") || 
+        dnsDomainIs(host, "medium.com") ||
         
         // NDTV Domains
         dnsDomainIs(host, ".ndtv.com") || 
         localHostOrDomainIs(host, "ndtv.com")) {
         return "DIRECT";
 
-        // Cleaned up Amazon Direct Logic
-        if (shExpMatch(host, "*.amazon.com") || 
-            shExpMatch(host, "*.amazon.in") || 
-            shExpMatch(host, "*.amazon.co.uk") ||
-            shExpMatch(host, "*.media-amazon.com") ||
-            dnsDomainIs(host, "amazon.com") ||
-            dnsDomainIs(host, "amazon.in") ||
-            dnsDomainIs(host, "amazon.co.uk")) {
-            return "DIRECT";
-        }
     }
 
     // 3. DIRECT: Internal/Local traffic
