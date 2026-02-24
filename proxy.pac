@@ -26,8 +26,10 @@ function FindProxyForURL(url, host) {
             dnsDomainIs(host, "www.amazon.com") ||
             dnsDomainIs(host, "amazon.in") || 
             dnsDomainIs(host, "fls-eu.amazon.in") ||
+            dnsDomainIs(host, "msh.amazon.co.uk") ||
             shExpMatch(host, "*.amazon.in") ||
             shExpMatch(host, "*.amazon.com") ||
+            shExpMatch(host, "*.amazon.co.uk") ||
             shExpMatch(host, "*.media-amazon.com")) {
             return "DIRECT";
         }
