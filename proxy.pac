@@ -21,16 +21,14 @@ function FindProxyForURL(url, host) {
         localHostOrDomainIs(host, "ndtv.com")) {
         return "DIRECT";
 
-        // Send Amazon traffic DIRECT
-        if (dnsDomainIs(host, "amazon.com") || 
-            dnsDomainIs(host, "www.amazon.com") ||
-            dnsDomainIs(host, "amazon.in") || 
-            dnsDomainIs(host, "fls-eu.amazon.in") ||
-            dnsDomainIs(host, "msh.amazon.co.uk") ||
-            shExpMatch(host, "*.amazon.in") ||
-            shExpMatch(host, "*.amazon.com") ||
+        // Cleaned up Amazon Direct Logic
+        if (shExpMatch(host, "*.amazon.com") || 
+            shExpMatch(host, "*.amazon.in") || 
             shExpMatch(host, "*.amazon.co.uk") ||
-            shExpMatch(host, "*.media-amazon.com")) {
+            shExpMatch(host, "*.media-amazon.com") ||
+            dnsDomainIs(host, "amazon.com") ||
+            dnsDomainIs(host, "amazon.in") ||
+            dnsDomainIs(host, "amazon.co.uk")) {
             return "DIRECT";
         }
     }
