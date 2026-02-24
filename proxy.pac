@@ -20,6 +20,14 @@ function FindProxyForURL(url, host) {
         dnsDomainIs(host, ".ndtv.com") || 
         localHostOrDomainIs(host, "ndtv.com")) {
         return "DIRECT";
+
+        // Send Amazon traffic DIRECT
+        if (dnsDomainIs(host, "amazon.com") || 
+            dnsDomainIs(host, "www.amazon.com") ||
+            shExpMatch(host, "*.amazon.com") ||
+            shExpMatch(host, "*.media-amazon.com")) {
+            return "DIRECT";
+        }
     }
 
     // 3. DIRECT: Internal/Local traffic
