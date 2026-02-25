@@ -32,7 +32,7 @@ function FindProxyForURL(url, host) {
         // NDTV Domains
         dnsDomainIs(host, ".ndtv.com") || 
         localHostOrDomainIs(host, "ndtv.com")) {
-        return "DIRECT";
+        return "PROXY 10.42.2.66:8090";
 
     }
 
