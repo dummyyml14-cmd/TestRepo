@@ -19,7 +19,16 @@ function FindProxyForURL(url, host) {
         // Medium
         shExpMatch(host, "*.medium.com") || 
         dnsDomainIs(host, "medium.com") ||
-        
+
+        // Amazon
+        shExpMatch(host, "*.amazon.com") || 
+        shExpMatch(host, "*.amazon.in") || 
+        shExpMatch(host, "*.amazon.co.uk") ||
+        shExpMatch(host, "*.media-amazon.com") ||
+        dnsDomainIs(host, "amazon.com") ||
+        dnsDomainIs(host, "amazon.in") ||
+        dnsDomainIs(host, "amazon.co.uk") || 
+
         // NDTV Domains
         dnsDomainIs(host, ".ndtv.com") || 
         localHostOrDomainIs(host, "ndtv.com")) {
