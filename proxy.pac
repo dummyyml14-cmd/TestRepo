@@ -17,8 +17,8 @@ function FindProxyForURL(url, host) {
         shExpMatch(host, "*.akamaihd.net") || 
 
         // Medium
-        //shExpMatch(host, "*.medium.com") || 
-        //dnsDomainIs(host, "medium.com") ||
+        shExpMatch(host, "*.medium.com") || 
+        dnsDomainIs(host, "medium.com") ||
 
         // Amazon
         shExpMatch(host, "*.amazon.com") || 
