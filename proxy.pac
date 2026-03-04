@@ -6,7 +6,20 @@ function FindProxyForURL(url, host) {
        return "DIRECT";
     }
 
-    if (
+    if (// Myntra Domains
+        dnsDomainIs(host, ".myntra.com") || 
+        localHostOrDomainIs(host, "myntra.com") ||
+        shExpMatch(host, "*.myntassets.com") || // Myntra's Image/Static CDN
+        
+        // Hotstar Domains
+        dnsDomainIs(host, ".hotstar.com") || 
+        localHostOrDomainIs(host, "hotstar.com") ||
+        shExpMatch(host, "*.akamaihd.net") || 
+
+        // Medium
+        shExpMatch(host, "*.medium.com") || 
+        dnsDomainIs(host, "medium.com") ||
+
         // Amazon
         shExpMatch(host, "*.amazon.com") || 
         shExpMatch(host, "*.amazon.in") || 
