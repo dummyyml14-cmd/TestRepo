@@ -43,5 +43,6 @@ function FindProxyForURL(url, host) {
     }
 
     // 4. PROXY: Everything else goes via the IPsec Tunnel
-    return "PROXY 10.42.4.149:8090";
+    //return "PROXY 10.42.4.149:8090";
+    return "PROXY 10.42.1.135:8090";
 }
