@@ -30,7 +30,15 @@ function FindProxyForURL(url, host) {
         dnsDomainIs(host, "amazon.in") ||
         dnsDomainIs(host, "amazon.co.uk") || 
 
-        
+        // Apple Maps & Infrastructure
+        shExpMatch(host, "*.cdn-apple.com") ||
+        shExpMatch(host, "*.apple-dns.net") ||
+        shExpMatch(host, "*.icloud.com") ||
+        shExpMatch(host, "configuration.apple.com") ||
+        shExpMatch(host, "vector.maps.apple.com") ||
+        shExpMatch(host, "*.apple-mapkit.com") ||
+        shExpMatch(host, "*.ls.apple.com") ||
+
         // NDTV Domains
         dnsDomainIs(host, ".ndtv.com") || 
         localHostOrDomainIs(host, "ndtv.com")) {
