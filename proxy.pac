@@ -7,6 +7,20 @@ function FindProxyForURL(url, host) {
     }
 
     if (
+         // Myntra Domains
+         dnsDomainIs(host, ".myntra.com") || 
+        localHostOrDomainIs(host, "myntra.com") ||
+        shExpMatch(host, "*.myntassets.com") || 
+        
+        // Hotstar Domains
+        dnsDomainIs(host, ".hotstar.com") || 
+        localHostOrDomainIs(host, "hotstar.com") ||
+        shExpMatch(host, "*.akamaihd.net") || 
+
+        // Medium Domains
+        dnsDomainIs(host, ".medium.com") || 
+        localHostOrDomainIs(host, "medium.com") ||
+        
         // Amazon
         shExpMatch(host, "*.amazon.com") || 
         shExpMatch(host, "*.amazon.in") || 
