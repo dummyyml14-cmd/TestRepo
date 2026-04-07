@@ -52,6 +52,6 @@ function FindProxyForURL(url, host) {
     }
 
     // 4. PROXY: Everything else goes via the IPsec Tunnel
-    return "PROXY mwg.wgcs-mowgli-preprod.svc.cluster.local:8090";
+    return "PROXY 10.42.10.138:8090";
     //return "PROXY 10.42.0.144:8090";
 }
