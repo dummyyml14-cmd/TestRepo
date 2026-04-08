@@ -52,13 +52,6 @@ function FindProxyForURL(url, host) {
     }
 
     // 4. PROXY: Everything else goes via the IPsec Tunnel
-    //return "PROXY 10.42.4.254:8090";
-    var resolvedProxyIp = dnsResolve("mwg.wgcs-mowgli-preprod.svc.cluster.local");
-
-    if (resolvedProxyIp) {
-        return "PROXY " + resolvedProxyIp + ":8090";
-    } else {
-        // If it still can't resolve, try the FQDN as a last resort
-        return "PROXY mwg.wgcs-mowgli-preprod.svc.cluster.local:8090";
-    }
+    return "PROXY 10.42.4.254:8090";
+    
 }
