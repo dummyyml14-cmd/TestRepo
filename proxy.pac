@@ -52,6 +52,6 @@ function FindProxyForURL(url, host) {
     }
 
     // 4. PROXY: Everything else goes via the IPsec Tunnel
-    return "PROXY 131.229.143.68:8090";
+    return "PROXY c75316042.wgcs.integration.skyhigh.cloud:8090";
     
 }
