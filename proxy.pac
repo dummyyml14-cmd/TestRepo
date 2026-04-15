@@ -11,6 +11,11 @@ function FindProxyForURL(url, host) {
          dnsDomainIs(host, ".myntra.com") || 
         localHostOrDomainIs(host, "myntra.com") ||
         shExpMatch(host, "*.myntassets.com") || 
+
+        // Flipkart Domains (Added)
+        dnsDomainIs(host, "flipkart.com") || 
+        dnsDomainIs(host, "flipkart.net") || 
+        shExpMatch(host, "*.fkcdn.com") ||
         
         // Hotstar Domains
         dnsDomainIs(host, ".hotstar.com") || 
