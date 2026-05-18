@@ -8,15 +8,41 @@ function FindProxyForURL(url, host) {
        return "DIRECT";
     }
 
-    IF (shExpMatch (host, "*.facebook.com") ||
-        dnsDomainIs (host, ".facebook.com") ||
-        shExpMatch (host, "*.youtube.com") ||
-        dnsDomainIs (host, ".youtube.com") ||
-        localHostOrDomainIs (host, "facebook.com") ||
-        localHostOrDomainIs (host, "youtube.com")) {  
-        
-        return "PROXY c75320397.wgcs.integration.skyhigh.cloud:8090";
+     if (
+         // Myntra Domains
+         dnsDomainIs(host, ".myntra.com") ||
+        localHostOrDomainIs(host, "myntra.com") ||
+        shExpMatch(host, "*.myntassets.com") ||
+
+        // Medium Domains
+        dnsDomainIs(host, ".medium.com") ||
+        localHostOrDomainIs(host, "medium.com") ||
+
+        // Amazon
+        shExpMatch(host, "*.amazon.com") ||
+        shExpMatch(host, "*.amazon.in") ||
+        shExpMatch(host, "*.amazon.co.uk") ||
+        shExpMatch(host, "*.media-amazon.com") ||
+        dnsDomainIs(host, "amazon.com") ||
+        dnsDomainIs(host, "amazon.in") ||
+        dnsDomainIs(host, "amazon.co.uk") ||
+
+        // Apple Maps & Infrastructure
+        shExpMatch(host, "*.cdn-apple.com") ||
+        shExpMatch(host, "*.apple-dns.net") ||
+        shExpMatch(host, "*.icloud.com") ||
+        shExpMatch(host, "configuration.apple.com") ||
+        shExpMatch(host, "vector.maps.apple.com") ||
+        shExpMatch(host, "*.apple-mapkit.com") ||
+        shExpMatch(host, "*.ls.apple.com")
+	) {
+        return "DIRECT";
+
     }
-    return "DIRECT";
-    
+
+    if (isPlainHostName(host)) {
+        return "DIRECT";
+    }
+
+    return "PROXY c75320397.wgcs.integration.skyhigh.cloud:8090";
 }
