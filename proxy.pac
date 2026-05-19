@@ -45,5 +45,5 @@ function FindProxyForURL(url, host) {
     }
 
     //return "PROXY c75320397.wgcs.integration.skyhigh.cloud:8090";
-	return "PROXY c75316042.wgcs.integration.skyhigh.cloud:8080";
+	return "PROXY c75316042.wgcs.integration.skyhigh.cloud";
 }
